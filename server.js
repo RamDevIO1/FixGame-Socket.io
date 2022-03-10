@@ -108,6 +108,7 @@ function createPlayer(playerData, socketId) {
     sprite: {
       frame: 0,
       tillNext: 0,
+      turned: 'right',
     }
     //respawnAt
   });

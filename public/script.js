@@ -2,7 +2,7 @@ const socket = io('/');
 
 let canvas = document.getElementById('canvas'),
   ctx = canvas.getContext('2d'),
-  w = canvas.width = 340;
+  w = canvas.width = 340,
 h = canvas.height = 200;
 
 let Input = {
