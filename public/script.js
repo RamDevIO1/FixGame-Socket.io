@@ -2,8 +2,8 @@ const socket = io('/');
 
 let canvas = document.getElementById('canvas'),
   ctx = canvas.getContext('2d'),
-  w = canvas.width = 400;
-h = canvas.height = 280;
+  w = canvas.width = 340;
+h = canvas.height = 200;
 
 let Input = {
   pressed: {},
@@ -268,6 +268,7 @@ function loadImages() {
 
 function update() {
   draw();
+  renderButtons(controller.buttons);
   if (loggedIn)
     getInput();
 

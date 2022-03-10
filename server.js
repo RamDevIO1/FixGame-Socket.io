@@ -7,7 +7,6 @@ const express = require('express'),
 app.use(express.static('public'));
 
 console.log('Starting server...');
-
 // data
 let players = [],
   playersData = [],
