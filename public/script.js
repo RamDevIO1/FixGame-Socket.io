@@ -130,19 +130,19 @@ function draw() {
       hp = player.hp;
       ammo = player.ammo;
     }
-/*
+
     // draw gun
     if (player.sprite.turned === "left") { gunangle = 3.11 }
     if (player.sprite.turned === "right") { gunangle = 0 }
 
     drawRotatedImage(ctx, imgGun, gunangle, player.x + 10, player.y + 5, gunType.indexOf(playerd.gun) * t, 0, t, 15);
-*/
+/*
 if (player.mouse !== undefined) {
   let dy = player.mouse.y - player.y - 10,
     dx = player.mouse.x - player.x - 10,
     angle = Math.atan2(dy, dx);
   drawRotatedImage(ctx, imgGun, angle % (Math.PI * 2), player.x + 10, player.y + 5, gunType.indexOf(player.gun) * t, 0, t, 15);
-}
+}*/
 
   });
 
