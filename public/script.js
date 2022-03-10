@@ -1,9 +1,9 @@
 const socket = io('/');
 
-let canvas = document.getElementById('canvas'),
-  ctx = canvas.getContext('2d'),
-  w = canvas.width = 340,
-h = canvas.height = 200;
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+let w = canvas.width = 340;
+let h = canvas.height = 200;
 
 let Input = {
   pressed: {},
@@ -25,24 +25,24 @@ function getMouseCords(event) {
   Input.mouse.y = event.clientY - rect.top;
 }
 // consts
-const t = 20,
-  colors = ["red", "blue", "green", "yellow"],
-  packageType = ["gun1", "gun2", "health"],
-  gunType = ["default", "gun1", "gun2"],
-  bulletType = {
-    "default": "#fff",
-    "gun1": "#832",
-    "gun2": "#3f4"
-  };
+const t = 20;
+const colors = ["red", "blue", "green", "yellow"];
+const packageType = ["gun1", "gun2", "health"];
+const gunType = ["default", "gun1", "gun2"];
+const bulletType = {
+  "default": "#fff",
+  "gun1": "#832",
+  "gun2": "#3f4"
+};
 
 // data
-let players = [],
-  bullets = [],
-  stats = [],
-  packages = [],
-  map = undefined,
-  time = 0,
-  loggedIn = false;
+let players = [];
+let bullets = [];
+let stats = [];
+let packages = [];
+let map = undefined;
+let time = 0;
+let loggedIn = false;
 
 // reacting on socket
 socket.on('serverData', data => {
@@ -129,20 +129,20 @@ function draw() {
       hp = player.hp;
       ammo = player.ammo;
     }
-      let gunangle
+    let gunangle
 
     // draw gun
     if (player.sprite.turned === "left") { gunangle = 3.11 }
     if (player.sprite.turned === "right") { gunangle = 0 }
 
     drawRotatedImage(ctx, imgGun, gunangle, player.x + 10, player.y + 5, gunType.indexOf(player.gun) * t, 0, t, 15);
-/*
-if (player.mouse !== undefined) {
-  let dy = player.mouse.y - player.y - 10,
-    dx = player.mouse.x - player.x - 10,
-    angle = Math.atan2(dy, dx);
-  drawRotatedImage(ctx, imgGun, angle % (Math.PI * 2), player.x + 10, player.y + 5, gunType.indexOf(player.gun) * t, 0, t, 15);
-}*/
+    /*
+    if (player.mouse !== undefined) {
+      let dy = player.mouse.y - player.y - 10,
+        dx = player.mouse.x - player.x - 10,
+        angle = Math.atan2(dy, dx);
+      drawRotatedImage(ctx, imgGun, angle % (Math.PI * 2), player.x + 10, player.y + 5, gunType.indexOf(player.gun) * t, 0, t, 15);
+    }*/
 
   });
 
