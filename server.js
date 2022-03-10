@@ -1,8 +1,8 @@
-const express = require('express'),
-  socket = require('socket.io'),
-  app = express(),
-  server = app.listen(3000),
-  io = socket(server);
+const express = require('express')
+const app = express()
+const server = require("http").Server(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 app.use(express.static('public'));
 
@@ -31,7 +31,7 @@ const map = [
 
 const t = 20,
   spawnPoints = [{ x: 280, y: 37 }, { x: 160, y: 40 }, { x: 50, y: 150 }]
-  bulletSpeed = {
+bulletSpeed = {
     "default": 15,
     "gun1": 20,
     "gun2": 12
@@ -397,3 +397,5 @@ setInterval(() => {
   if (time % packageSpawnTime === 0 && packages.length < packageSpawnPoints.length)
     spawnPackage();
 }, 1000);
+
+server.listen(process.env.PORT || 3030);
