@@ -1,6 +1,4 @@
-let btn_panel = document.getElementById("controller").getContext("2d")
-let controller
-let Button
+btn_panel = document.getElementById("controller").getContext("2d")
 btn_panel.canvas.height = 90;
 btn_panel.canvas.width = 334;
 
