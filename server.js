@@ -264,7 +264,7 @@ function updatePlayer(playerData = { id: player.id, down: [] }) {
 
       // shooting bullets
       if (playerData.mouse !== undefined && player.respawnAt === undefined) {
-        if (playerData.down.indexOf('s') && player.tillNextBullet <= 0) {
+        if (playerData.down.indexOf('s') !== -1 && player.tillNextBullet <= 0) {
           player.tillNextBullet = bulletDelay[player.gun];
           let angle
           if (player.sprite.turned === "left") { angle = 3.11 }
