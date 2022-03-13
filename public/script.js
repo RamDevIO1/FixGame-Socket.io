@@ -280,8 +280,8 @@ function loadImages() {
 }
 
 function update() {
-  draw();
   renderButtons(controller.buttons);
+  draw();
   if (loggedIn)
     getInput();
 

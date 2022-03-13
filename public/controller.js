@@ -1,10 +1,8 @@
-//let controller
-const btn_panel = document.getElementById("controller").getContext("2d")
+let btn_panel = document.getElementById("controller").getContext("2d")
+let controller
+let Button
 btn_panel.canvas.height = 90;
 btn_panel.canvas.width = 334;
-
-
-
 
 // basically a rectangle, but it's purpose here is to be a button:
 Button = function(x, y, width, height, color) {
@@ -30,7 +28,7 @@ controller = {
     new Button(15, 20, 50, 50, "#D8E2EB"),
     new Button(85, 20, 50, 50, "#D8E2EB"),
     new Button(190, 20, 50, 50, "#D8E2EB"),
-    new Button(260  , 20, 50, 50, "#D8E2EB")
+    new Button(260  , 20, 50, 50, "#D8E2EB"),
   ],
 
   eventButtons: function(target_touches) {
@@ -47,8 +45,6 @@ controller = {
         }
       }
     }
-    
-    
   },
 
   touchEnd: function(event) {
