@@ -5,6 +5,7 @@ let ctx = canvas.getContext('2d');
 let w = canvas.width = 340;
 let h = canvas.height = 200;
 
+
 let Input = {
   pressed: {},
   keys: { w: 87, s: 83, a: 65, d: 68, t: 84 },
@@ -24,6 +25,8 @@ function getMouseCords(event) {
   Input.mouse.x = event.clientX - rect.left;
   Input.mouse.y = event.clientY - rect.top;
 }
+
+
 // consts
 const t = 20;
 const colors = ["red", "blue", "green", "yellow"];
@@ -75,15 +78,19 @@ function getInput() {
       pressed: controller.buttons[2].active
     }
   };
+  
+  // left
+  // right
+  // jump
 
-  if (controller.buttons[3].active)
-    playerData.down.push('w');
-  else if (Input.isDown('s'))
-    playerData.down.push('s');
   if (controller.buttons[0].active)
-    playerData.down.push('a');
+    playerData.down.push('l');
   else if (controller.buttons[1].active)
-    playerData.down.push('d');
+    playerData.down.push('r');
+  if (controller.buttons[3].active)
+    playerData.down.push('j');
+  else if (controller.buttons[2].active)
+    playerData.down.push('s');
 
   socket.emit('clientData', playerData);
 }
@@ -171,7 +178,7 @@ function draw() {
 
   let isFaded = false;
 
-  if (Input.isDown('t')) {
+  if (false) {
     fade();
     isFaded = true;
 

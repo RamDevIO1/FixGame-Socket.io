@@ -8,12 +8,12 @@ app.use(express.static('public'));
 
 console.log('Starting server...');
 // data
-let players = [],
-  playersData = [],
-  bullets = [],
-  stats = [],
-  packages = [],
-  time = 0;
+let players = [];
+let playersData = [];
+let bullets = [];
+let stats = [];
+let packages = [];
+let time = 0;
 
 // consts
 const map = [
@@ -29,33 +29,33 @@ const map = [
   [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1]
 ];
 
-const t = 20,
-  spawnPoints = [{ x: 280, y: 37 }, { x: 160, y: 40 }, { x: 50, y: 150 }]
-bulletSpeed = {
-    "default": 15,
-    "gun1": 20,
-    "gun2": 12
-  },
-  bulletDelay = {
-    "default": 8,
-    "gun1": 15,
-    "gun2": 12
-  },
-  bulletAmmo = {
-    "default": -1,
-    "gun1": 8,
-    "gun2": 10,
-  },
-  bulletDamage = {
-    "default": 20,
-    "gun1": 60,
-    "gun2": 40
-  },
-  packageSpawnPoints = [{ x: 40, y: 180 }, { x: 340, y: 180 }, { x: 40, y: 240 }, { x: 340, y: 240 }],
-  packageType = ["health", "gun1", "gun2"],
-  packageHealth = 20,
-  packageSpawnTime = 10,
-  playerMaxFrame = 5;
+const t = 20
+const spawnPoints = [{ x: 280, y: 37 }, { x: 160, y: 40 }, { x: 50, y: 150 }]
+const bulletSpeed = {
+  "default": 15,
+  "gun1": 20,
+  "gun2": 12
+}
+const bulletDelay = {
+  "default": 8,
+  "gun1": 15,
+  "gun2": 12
+}
+const bulletAmmo = {
+  "default": -1,
+  "gun1": 8,
+  "gun2": 10,
+}
+const bulletDamage = {
+  "default": 20,
+  "gun1": 60,
+  "gun2": 40
+}
+const packageSpawnPoints = [{ x: 40, y: 180 }, { x: 340, y: 180 }, { x: 40, y: 240 }, { x: 340, y: 240 }]
+const packageType = ["health", "gun1", "gun2"]
+const packageHealth = 20
+const packageSpawnTime = 10
+const playerMaxFrame = 5;
 
 // socket connection event
 io.on('connection', function(socket) {
@@ -206,12 +206,12 @@ function updatePlayer(playerData = { id: player.id, down: [] }) {
     }
 
     if (player.hp > 0) {
-      if (playerData.down.indexOf('a') !== -1) {
+      if (playerData.down.indexOf('l') !== -1) {
         player.sprite.turned = 'left'
         if (player.vx > -5)
           player.vx -= 0.5;
       }
-      else if (playerData.down.indexOf('d') !== -1) {
+      else if (playerData.down.indexOf('r') !== -1) {
         player.sprite.turned = 'right'
         if (player.vx < 5)
           player.vx += 0.5;
@@ -223,7 +223,7 @@ function updatePlayer(playerData = { id: player.id, down: [] }) {
           player.vx += 0.5;
       }
 
-      if (playerData.down.indexOf('w') !== -1 && player.ground) {
+      if (playerData.down.indexOf('j') !== -1 && player.ground) {
         player.vy = -9.5;
         player.ground = false;
       }
@@ -264,7 +264,7 @@ function updatePlayer(playerData = { id: player.id, down: [] }) {
 
       // shooting bullets
       if (playerData.mouse !== undefined && player.respawnAt === undefined) {
-        if (playerData.mouse.pressed && player.tillNextBullet <= 0) {
+        if (playerData.down.indexOf('s') && player.tillNextBullet <= 0) {
           player.tillNextBullet = bulletDelay[player.gun];
           let angle
           if (player.sprite.turned === "left") { angle = 3.11 }
