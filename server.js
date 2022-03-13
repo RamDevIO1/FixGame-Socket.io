@@ -51,7 +51,7 @@ const bulletDamage = {
   "gun1": 60,
   "gun2": 40
 }
-const packageSpawnPoints = [{ x: 40, y: 180 }, { x: 340, y: 180 }, { x: 40, y: 240 }, { x: 340, y: 240 }]
+const packageSpawnPoints = [{ x: 280, y: 37 }, { x: 160, y: 40 }, { x: 50, y: 150 }]
 const packageType = ["health", "gun1", "gun2"]
 const packageHealth = 20
 const packageSpawnTime = 10
